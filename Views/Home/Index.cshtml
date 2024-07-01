@@ -1,0 +1,108 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model PruebaTecnica.Models.CabMovimiento;
+
+
+<div class="row">
+
+    <div class="col-sm-8 offset-sm-2">
+
+        <h2>Lusta de Empleados</h2>
+        <form id="consultaForm" method="post" asp-controller="Home" asp-action="Consultar">
+
+            <button type="submit" class="btn btn-warning">
+                Consultar
+            </button>
+
+            <label>
+                Fecha de Inicio
+            </label>
+            <input class="form-control" type="date" asp-for="fechaInicio" />
+
+
+            <label>
+                Fecha Final
+            </label>
+            <input class="form-control" type="date" asp-for="fechaFinal" />
+
+            <label>
+                Tipo Movimiento
+            </label>
+            <input class="form-control" type="text" asp-for="tipoMov" />
+
+            <label>
+                Nro. Documento
+            </label>
+            <input class="form-control" type="text" asp-for="NroDoc" />
+
+        </form>
+
+
+
+      
+
+        <table class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <th>
+                        CIA
+                    </th>
+                    <th>
+                        Compañía
+                    </th>
+
+                    <th>
+                        Almacén
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model.movimientos)
+                {
+
+                    <tr>
+                        <td>
+                            @item.codCIA
+                        </td>
+                        <td>
+                            @item.companiaVenta
+                        </td>
+
+                        <td>
+                            @item.almacenVenta
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+
+        </table>
+
+
+        <form id="RegistrarForm" method="post" asp-controller="Home" asp-action="Registrar">
+
+            <button type="submit" class="btn btn-warning">
+                Registrar
+            </button>
+
+            <label>
+                Tipo Movimiento
+            </label>
+            <input class="form-control" type="text" asp-for="tipoMov" />
+
+            <label>
+                Nro. Documento
+            </label>
+            <input class="form-control" type="text" asp-for="NroDoc" />
+
+        </form>
+
+    </div>
+
+</div>
